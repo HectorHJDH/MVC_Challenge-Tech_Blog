@@ -1,0 +1,29 @@
+{
+  "name": "module-14-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HectorHJDH/MVC_Challenge-Tech_Blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HectorHJDH/MVC_Challenge-Tech_Blog/issues"
+  },
+  "homepage": "https://github.com/HectorHJDH/MVC_Challenge-Tech_Blog#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "connect-session-sequelize": "^7.1.7",
+    "dotenv": "^16.3.0",
+    "express-handlebars": "^7.0.7",
+    "express-session": "^1.17.3",
+    "mysql2": "^3.3.5",
+    "sequelize": "^6.32.1"
+  }
+}
