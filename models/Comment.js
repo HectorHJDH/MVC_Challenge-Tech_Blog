@@ -2,8 +2,8 @@
 
 // Dependencies
 // sequelize model, datatypes, and database connection
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 // the Comment model extends the sequelize Model
 class Comment extends Model {}
@@ -26,15 +26,15 @@ Comment.init(
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
-        key: 'id',
+        model: "user",
+        key: "id",
       },
     },
     post_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'post',
-        key: 'id',
+        model: "post",
+        key: "id",
       },
     },
   },
@@ -42,7 +42,7 @@ Comment.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'comment',
+    modelName: "comment",
   }
 );
 

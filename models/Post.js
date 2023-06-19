@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 // the Post model extends the sequelize Model
 class Post extends Model {}
@@ -23,16 +23,16 @@ Post.init(
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
-        // post must be at least one character long
-        len: [1],
+        // post must be at least ten character long
+        len: [10],
       },
     },
 
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
-        key: 'id',
+        model: "user",
+        key: "id",
       },
     },
   },
@@ -40,7 +40,7 @@ Post.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post',
+    modelName: "post",
   }
 );
 module.exports = Post;
