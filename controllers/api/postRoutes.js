@@ -7,6 +7,7 @@ const withAuth = require("../../utils/auth");
 
 // GET /api/posts
 router.get("/", (req, res) => {
+  // Retrieve all posts with associated comments and user information
   Post.findAll({
     attributes: ["id", "title", "content", "created_at"],
     order: [["created_at", "DESC"]],
@@ -34,6 +35,7 @@ router.get("/", (req, res) => {
 
 // GET /api/posts/1
 router.get("/:id", (req, res) => {
+  // Retrieve a specific post by its ID with associated comments and user information
   Post.findOne({
     where: {
       id: req.params.id,
@@ -69,6 +71,7 @@ router.get("/:id", (req, res) => {
 
 // POST /api/posts
 router.post("/", withAuth, (req, res) => {
+  // Create a new post
   if (req.session) {
     Post.create({
       title: req.body.title,
@@ -84,6 +87,7 @@ router.post("/", withAuth, (req, res) => {
 
 // PUT /api/posts/1
 router.put("/:id", withAuth, (req, res) => {
+  // Update a specific post by its ID
   Post.update(
     {
       title: req.body.title,
@@ -110,6 +114,7 @@ router.put("/:id", withAuth, (req, res) => {
 
 // DELETE /api/posts/1
 router.delete("/:id", withAuth, (req, res) => {
+  // Delete a specific post by its ID
   Post.destroy({
     where: {
       id: req.params.id,

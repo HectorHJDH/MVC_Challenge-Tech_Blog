@@ -6,6 +6,7 @@ const withAuth = require("../../utils/auth");
 
 // GET /api/comments
 router.get("/", (req, res) => {
+  // Fetch all comments from the database
   Comment.findAll({})
     .then((dbCommentData) => res.json(dbCommentData))
     .catch((err) => {
@@ -17,6 +18,7 @@ router.get("/", (req, res) => {
 // POST /api/comments
 router.post("/", withAuth, (req, res) => {
   if (req.session) {
+    // Create a new comment in the database
     Comment.create({
       comment_text: req.body.comment_text,
       user_id: req.session.user_id,
@@ -31,6 +33,7 @@ router.post("/", withAuth, (req, res) => {
 
 // DELETE /api/comments/1
 router.delete("/:id", withAuth, (req, res) => {
+  // Delete a comment from the database based on its id
   Comment.destroy({
     where: {
       id: req.params.id,
@@ -38,6 +41,7 @@ router.delete("/:id", withAuth, (req, res) => {
   })
     .then((dbCommentData) => {
       if (!dbCommentData) {
+        // If no comment was found with the given id, return a 404 status
         res.status(404).json({ message: "No comment found with this id." });
         return;
       }

@@ -6,7 +6,7 @@ const withAuth = require("../../utils/auth");
 
 // GET /api/users
 router.get("/", (req, res) => {
-  // Access our User model and run .findAll() method)
+  // Retrieve all users, excluding the password attribute
   User.findAll({
     attributes: { exclude: ["password"] },
   })
@@ -19,6 +19,7 @@ router.get("/", (req, res) => {
 
 // GET /api/users/1
 router.get("/:id", (req, res) => {
+  // Retrieve a specific user by its ID, excluding the password attribute
   User.findOne({
     attributes: { exclude: ["password"] },
     where: {
@@ -29,7 +30,7 @@ router.get("/:id", (req, res) => {
         model: Post,
         attributes: ["id", "title", "content", "created_at"],
       },
-      // include the Comment model here:
+      // Include the Comment model here
       {
         model: Comment,
         attributes: ["id", "comment_text", "created_at"],
@@ -59,12 +60,13 @@ router.get("/:id", (req, res) => {
 
 // POST /api/users
 router.post("/", (req, res) => {
+  // Create a new user
   User.create({
-    // expects {username: 'Lernantino', password: 'password1234'}
     username: req.body.username,
     password: req.body.password,
   })
     .then((dbUserData) => {
+      // Save user session upon successful creation
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
         req.session.username = dbUserData.username;
@@ -81,7 +83,7 @@ router.post("/", (req, res) => {
 
 // POST /api/users/login
 router.post("/login", (req, res) => {
-  // expects {username: 'lernantino', password: 'password1234'}
+  // Login a user
   User.findOne({
     where: {
       username: req.body.username,
@@ -101,7 +103,7 @@ router.post("/login", (req, res) => {
       }
 
       req.session.save(() => {
-        // declare session variables
+        // Declare session variables
         req.session.user_id = dbUserData.id;
         req.session.username = dbUserData.username;
         req.session.loggedIn = true;
@@ -117,6 +119,7 @@ router.post("/login", (req, res) => {
 
 // POST /api/users/logout
 router.post("/logout", withAuth, (req, res) => {
+  // Logout a user by destroying the session
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -128,8 +131,7 @@ router.post("/logout", withAuth, (req, res) => {
 
 // PUT /api/users/1
 router.put("/:id", withAuth, (req, res) => {
-  // expects {username: 'Lernantino', password: 'password1234'}
-  // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
+  // Update a user by its ID
   User.update(req.body, {
     individualHooks: true,
     where: {
@@ -138,7 +140,7 @@ router.put("/:id", withAuth, (req, res) => {
   })
     .then((dbUserData) => {
       if (!dbUserData[0]) {
-        res.status(404).json({ message: "No user found with this id" });
+        res.status(404).json({ message: "No user found with this id." });
         return;
       }
       res.json(dbUserData);
@@ -151,6 +153,7 @@ router.put("/:id", withAuth, (req, res) => {
 
 // DELETE /api/users/1
 router.delete("/:id", withAuth, (req, res) => {
+  // Delete a user by its ID
   User.destroy({
     where: {
       id: req.params.id,
@@ -158,7 +161,7 @@ router.delete("/:id", withAuth, (req, res) => {
   })
     .then((dbUserData) => {
       if (!dbUserData) {
-        res.status(404).json({ message: "No user found with this id" });
+        res.status(404).json({ message: "No user found with this id." });
         return;
       }
       res.json(dbUserData);
