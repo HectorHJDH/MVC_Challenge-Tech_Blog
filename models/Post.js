@@ -13,12 +13,10 @@ Post.init(
       primaryKey: true,
       autoIncrement: true,
     },
-
     title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-
     content: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -27,7 +25,6 @@ Post.init(
         len: [10],
       },
     },
-
     user_id: {
       type: DataTypes.INTEGER,
       references: {
