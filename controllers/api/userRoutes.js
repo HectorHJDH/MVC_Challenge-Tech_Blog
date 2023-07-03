@@ -63,7 +63,6 @@ router.post("/", (req, res) => {
   // Create a new user
   User.create({
     username: req.body.username,
-    email: req.body.email,
     password: req.body.password,
   })
     .then((dbUserData) => {
@@ -125,6 +124,7 @@ router.post("/logout", withAuth, (req, res) => {
     req.session.destroy(() => {
       res.status(204).end();
     });
+    console.log("Logged out");
   } else {
     res.status(404).end();
   }
