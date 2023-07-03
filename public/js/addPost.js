@@ -23,6 +23,7 @@ async function newFormHandler(event) {
   }
 }
 
+// Add event listener to the new post form
 document
   .querySelector("#new-post-form")
   .addEventListener("submit", newFormHandler);
