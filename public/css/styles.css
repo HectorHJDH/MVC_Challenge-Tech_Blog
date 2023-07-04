@@ -46,13 +46,15 @@ header {
 
 /* SIGN UP FORM STYLES */
 .signup,
-.login {
+.login,
+.createPost {
   margin: 2rem 3rem;
   border: 4px solid black;
 }
 
 .signup-title,
-.login-title {
+.login-title,
+.createPost-title {
   background-color: #231010;
   color: #d9ead3;
   padding: 10px 22px;
@@ -60,7 +62,8 @@ header {
 }
 
 .signup-form,
-.login-form {
+.login-form,
+.createPost-form {
   padding: 5px 22px;
   font-size: 19px;
   display: flex;
@@ -68,20 +71,32 @@ header {
 }
 
 .signup-form label,
-.login-form label {
+.login-form label,
+.createPost-form label {
   margin: 0.5rem 0;
 }
 
 .signup-form input,
-.login-form input {
+.login-form input,
+.createPost-form input {
   padding: 0.5rem;
   margin-bottom: 0.4rem;
   font-size: 19px;
   border: none;
 }
 
+.createPost-form textarea {
+  padding: 0.5rem;
+  margin-bottom: 0.4rem;
+  font-size: 19px;
+  border: none;
+  resize: none;
+  height: 100px;
+}
+
 .signup-form button,
-.login-form button {
+.login-form button,
+.createPost-form button {
   margin: 1rem 0 0.3rem 0;
   padding: 0.7rem 0.2rem;
   font-size: 19px;
@@ -93,11 +108,13 @@ header {
 }
 
 .signup-form button:hover,
-.login-form button:hover {
+.login-form button:hover,
+.createPost-form button:hover {
   background-color: #231010;
 }
 .signup-form p,
-.login-form p {
+.login-form p,
+.createPost-form p {
   margin-bottom: 0.5rem;
 }
 
@@ -114,4 +131,5 @@ header {
   left: 50%;
   transform: translateX(-50%);
   cursor: pointer;
+  text-decoration: none;
 }

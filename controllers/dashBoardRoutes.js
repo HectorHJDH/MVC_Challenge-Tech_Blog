@@ -79,9 +79,7 @@ router.get("/edit/:id", withAuth, (req, res) => {
 // GET new post
 router.get("/new", (req, res) => {
   // Render the new-post view and pass data to it if the user is logged in
-  res.render("new-post", {
-    layout: "dashboard",
-  });
+  res.render("new", {});
 });
 
 module.exports = router;
