@@ -20,16 +20,16 @@ header {
   padding: 20px 2%;
 }
 
-.nav-titles a {
+.nav-titles a,
+#logout-btn {
   display: inline;
   margin: 0 2rem;
   font-size: 20px;
   color: #d9ead3;
+  background-color: #231010;
   text-decoration: none;
-}
-
-.nav-titles a:hover {
   cursor: pointer;
+  border: none;
 }
 
 .title {
@@ -99,4 +99,19 @@ header {
 .signup-form p,
 .login-form p {
   margin-bottom: 0.5rem;
+}
+
+#createPost-btn {
+  margin: 0 auto;
+  padding: 10px 15px;
+  background-color: #231010;
+  color: #d9ead3;
+  font-size: 20px;
+  border: none;
+  border-radius: 8px;
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
 }

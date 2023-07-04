@@ -70,18 +70,19 @@ router.get("/:id", (req, res) => {
 });
 
 // POST /api/posts
-router.post("/", withAuth, (req, res) => {
-  // Create a new post
-  if (req.session) {
-    Post.create({
+router.post("/", withAuth, async (req, res) => {
+  try {
+    // Create a new post
+    const newPost = await Post.create({
       title: req.body.title,
       content: req.body.content,
       user_id: req.session.user_id,
-    })
-      .then((dbPostData) => res.json(dbPostData))
-      .catch((err) => {
-        res.status(400).json(err);
-      });
+    });
+
+    res.status(200).json(newPost);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 

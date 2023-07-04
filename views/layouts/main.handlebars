@@ -12,14 +12,23 @@
       <nav class="nav-titles">
         <a href="/">Home</a>
         <a href="/dashboard">Dashboard</a>
-        <a href="/login">Login</a>
-        <button id="logout">Logout</button>
-
+        {{#if loggedIn}}
+          <button id="logout-btn">Logout</button>
+        {{else}}
+          <a href="/login">Login</a>
+        {{/if}}
       </nav>
       <div class="title">
-        The Tech Blog
+        {{#if dashboard}}
+          Dashboard
+        {{else}}
+          The Tech Blog
+        {{/if}}
       </div>
     </header>
     <script src="/js/logout.js"></script>
+    <div>
+      {{{body}}}
+    </div>
   </body>
 </html>

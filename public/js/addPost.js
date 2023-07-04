@@ -15,9 +15,9 @@ async function newFormHandler(event) {
       "Content-Type": "application/json",
     },
   });
-  // If successful, redirect the browser to the dashboard page
+  // If successful, reload the page to display the new post
   if (response.ok) {
-    document.location.replace("/dashboard");
+    document.location.reload();
   } else {
     alert(response.statusText);
   }
@@ -25,5 +25,5 @@ async function newFormHandler(event) {
 
 // Add event listener to the new post form
 document
-  .querySelector("#new-post-form")
+  .querySelector("#createPost-btn")
   .addEventListener("submit", newFormHandler);

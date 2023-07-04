@@ -1,0 +1,30 @@
+<!--Button for creating a new post in the dashboard-->
+<button type="button" id="createPost-btn">
+  + New Post
+</button>
+
+<div class="new-post-box">
+  <h2>New Post</h2>
+  <form id="new-post-form">
+    <div class="form-group">
+      <label for="post-title">Title:</label>
+      <input
+        type="text"
+        id="post-title"
+        name="title"
+        placeholder="Enter the post title"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="post-description">Description:</label>
+      <textarea
+        id="post-description"
+        name="description"
+        placeholder="Enter the post description"
+        required
+      ></textarea>
+    </div>
+    <button type="submit">Create Post</button>
+  </form>
+</div>
