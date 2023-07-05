@@ -1,5 +1,6 @@
 // New post form handler
 async function newFormHandler(event) {
+  console.log("AAAAAAAAAAAAAAAAAA");
   event.preventDefault();
   // Collect values from the new post form
   const title = document.querySelector("#post-title").value.trim();
@@ -9,12 +10,13 @@ async function newFormHandler(event) {
     method: "POST",
     body: JSON.stringify({
       title,
-      post_text,
+      content: post_text,
     }),
     headers: {
       "Content-Type": "application/json",
     },
   });
+  console.log("response", response);
   // If successful, reload the page to display the new post
   if (response.ok) {
     document.location.reload();
@@ -26,4 +28,4 @@ async function newFormHandler(event) {
 // Add event listener to the new post form
 document
   .querySelector("#createPost-btn")
-  .addEventListener("submit", newFormHandler);
+  .addEventListener("click", newFormHandler);

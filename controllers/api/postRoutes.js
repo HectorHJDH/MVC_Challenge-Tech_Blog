@@ -71,6 +71,7 @@ router.get("/:id", (req, res) => {
 
 // POST /api/posts
 router.post("/", withAuth, async (req, res) => {
+  console.log("holaaaaaaaaaaa");
   try {
     // Create a new post
     const newPost = await Post.create({
@@ -78,7 +79,7 @@ router.post("/", withAuth, async (req, res) => {
       content: req.body.content,
       user_id: req.session.user_id,
     });
-
+    console.log("THIS IS NEW POST ", newPost);
     res.status(200).json(newPost);
   } catch (err) {
     console.log(err);
