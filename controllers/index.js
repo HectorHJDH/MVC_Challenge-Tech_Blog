@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const dashboardRoutes = require("./dashBoardRoutes");
+const dashBoardRoutes = require("./dashBoardRoutes");
 const homeRoutes = require("./homeRoutes");
 const apiRoutes = require("./api");
 
@@ -9,8 +9,8 @@ router.use("/", homeRoutes);
 // Mount the apiRoutes on the "/api" URL prefix
 router.use("/api", apiRoutes);
 
-// Mount the dashboardRoutes on the "/dashboard" URL prefix
-router.use("/dashboard", dashboardRoutes);
+// Mount the dashBoardRoutes on the "/dashboard" URL prefix
+router.use("/dashboard", dashBoardRoutes);
 
 // If none of the defined routes match, return a 404 error
 router.use((req, res) => {
